@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Pink Neon Music</title>
+  <link rel="stylesheet" href="css2/canciones.css">
+</head>
+<body class="dashboard-page">
+  <header class="dashboard-header">
+    <a class="brand" href="dashboard.html">
+      <span class="brand-mark">PM</span>
+      <span>PINK <strong>MUSIC</strong></span>
+    </a>
+    <button id="logoutBtn" class="ghost-button" type="button">Cerrar sesion</button>
+  </header>
+
+  <main class="dashboard-shell">
+    <section class="welcome-card">
+      <p class="eyebrow">Sesion iniciada</p>
+      <h1 id="welcomeName">Bienvenido</h1>
+      <p id="welcomeEmail">Usuario conectado</p>
+    </section>
+
+    <section class="search-section">
+      <label for="musicSearch">Buscar canciones, artistas o albumes</label>
+      <input id="musicSearch" type="search" placeholder="Escribe una cancion, artista o album...">
+      <div id="searchResults" class="search-results" hidden></div>
+      <p id="searchEmpty" class="search-empty" hidden>No hay resultados para tu busqueda.</p>
+    </section>
+
+    <section class="content-grid">
+      <article class="info-card">
+        <h2>Eventos</h2>
+        <p>Pink Pop Night · Madrid Arena</p>
+        <p>Rock Espanol Live · Barcelona Club 9</p>
+        <p>Reggaeton Neon Fest · Valencia Beach Stage</p>
+        <p>Bad Bunny Concert · Riyadh Air Metropolitano (Metropolitano Stadium), Madrid </p>
+      </article>
+
+      <article class="info-card playing-card">
+        <h2>On playing</h2>
+        <div class="cover-box"></div>
+        <h3 class="Albumtitulo">Midnight Rosa</h3>
+        <p class="Albumtipo">Mix pop, rock, reggae y reggaeton</p>
+        <div class="music-player">
+          <audio id="dashAudioPlayer" preload="metadata"></audio>
+          
+          <div class="player-controls">
+            <button id="playPauseBtn" class="player-button" type="button" aria-label="Reproducir cancion">▶</button>
+            <div class="player-time">
+              <span id="currentTime">0:00</span>
+              <input id="songProgress" type="range" min="0" max="100" value="0" aria-label="Progreso de la cancion">
+              <span id="totalTime">0:00</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="info-card favorites-card">
+        <p class="eyebrow">Historico</p>
+        <h2>Favoritos seleccionados</h2>
+        <p class="favorites-empty" id="favoritesEmpty">Pulsa el corazon de una cancion para guardarla aqui.</p>
+        <div id="favoriteSongs" class="favorite-songs" aria-live="polite"></div>
+      </article>
+    </section>
+      
+        <button id="showLikedSongsBtn" class="liked-toggle" type="button" aria-expanded="false" aria-controls="likedSongsSection">
+      <span class="liked-toggle-icon">&#9829;</span>
+      <span>Canciones que me gustan</span>
+    </button>
+<section class="albums-section">
+     
+      <div class="section-heading">
+         
+        <div>
+          <p class="eyebrow">Portadas</p>
+          <h2>Albumes recomendados</h2>
+        </div>
+        <span>Pop · Rock espanol · Reggaeton · Reggae</span>
+      
+      </div>
+      <div id="albumGrid" class="album-grid" aria-live="polite"></div>
+      
+  
+    </section>
+
+    <section id="albumSongsSection" class="album-songs-section is-hidden" aria-live="polite">
+      <div class="album-songs-header">
+        <button id="backToAlbumsBtn" class="ghost-button" type="button">Volver a albumes</button>
+        <div class="album-songs-heading">
+          <img id="albumSongsCover" src="" alt="">
+          <div>
+            <p class="eyebrow">Canciones del album</p>
+            <h2 id="albumSongsTitle">Album seleccionado</h2>
+            <span id="albumSongsMeta">Artista</span>
+            <p id="albumSongsDescription">Selecciona una cancion para reproducirla en On playing.</p>
+          </div>
+        </div>
+      </div>
+      <div id="albumSongsList" class="album-songs-list"></div>
+    </section>
+
+    <section id="likedSongsSection" class="liked-songs is-hidden">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Playlist</p>
+      <h2>Las canciones que me gustan</h2>
+      <span id="track-counter">0 canciones seleccionadas</span>
+    </div>
+
+    <button class="play-button">▶</button>
+  </div>
+
+  <div class="songs-list">
+    <div class="song" data-song-id="blinding-lights" data-audio="">
+      <span class="number">1</span>
+      <img src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228" alt="Portada">
+      <div class="song-info">
+        <h3>Blinding Lights</h3>
+        <p>The Weeknd</p>
+      </div>
+      <span class="album">After Hours</span>
+      <button class="like" type="button" aria-label="Anadir Blinding Lights a favoritos" aria-pressed="false">♡</button>
+      <span class="duration">3:20</span>
+    </div>
+
+    <div class="song" data-song-id="as-it-was" data-audio="">
+      <span class="number">2</span>
+      <img src="https://i.scdn.co/image/ab67616d00001e02b46f74097655d7f353caab14" alt="Portada">
+      <div class="song-info">
+        <h3>As It Was</h3>
+        <p>Harry Styles</p>
+      </div>
+      <span class="album">Harry's House</span>
+      <button class="like" type="button" aria-label="Anadir As It Was a favoritos" aria-pressed="false">♡</button>
+      <span class="duration">2:47</span>
+    </div>
+
+    <div class="song" data-song-id="kingston-town" data-audio="">
+      <span class="number">3</span>
+      <img src="https://i.discogs.com/HYeJ_x_K5GkbSbdnxI3HWnkWr0WlKXtUwuT789--Inw/rs:fit/g:sm/q:90/h:463/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTUxMzcx/MTctMTcxNjMwNjMz/MS0zNzc0LmpwZWc.jpeg" alt="Portada">
+      <div class="song-info">
+        <h3>Kingston Town</h3>
+        <p>UB40</p>
+      </div>
+      <span class="album">Labour of Love II</span>
+      <button class="like" type="button" aria-label="Anadir Kingston Town a favoritos" aria-pressed="false">♡</button>
+      <span class="duration">4:00</span>
+    </div>
+    <div class="song" data-song-id="wonderwall" data-audio="">
+      <span class="number">4</span>
+      <img src="https://www.popsters.co.uk/uploads/1/1/1/4/11141978/s221398184203297103_p597_i1_w1009.jpeg" alt="Portada">
+      <div class="song-info">
+        <h3>Wonderwall</h3>
+        <p>Oasis</p>
+      </div>
+      <span class="album">(What's the Story) Morning Glory?</span>
+      <button class="like" type="button" aria-label="Anadir Wonderwall a favoritos" aria-pressed="false">♡</button>
+      <span class="duration">4:19</span>
+    </div>
+    <div class="song" data-song-id="sweet-home-alabama" data-audio="">
+      <span class="number">5</span>
+      <img src="https://i.scdn.co/image/ab67616d0000b27317e1907923e91181f38290ac" alt="Portada">
+      <div class="song-info">
+        <h3>Sweet Home Alabama</h3>
+        <p>Lynyrd Skynyrd</p>
+      </div>
+      <span class="album">Second Helping</span>
+      <button class="like" type="button" aria-label="Anadir Sweet Home Alabama a favoritos" aria-pressed="false">♡</button>
+      <span class="duration">4:44</span>
+    </div>
+    <div class="song" data-song-id="el-golpe-de-mi-tambo" data-audio="music/el_golpe_de_mi_tambo.mp3">
+  <span class="number">6</span>
+  <img src="https://i.scdn.co/image/ab67616d0000b27332ab217eed83e36ad4bbb61b" alt="Portada">
+  <div class="song-info">
+    <h3>El Golpe de mi Tambo</h3>
+    <p>Tonada</p>
+  </div>
+  <span class="album">Folclore Venezolano</span>
+  <button class="like" type="button" aria-label="Anadir El Golpe de mi Tambo a favoritos" aria-pressed="false">♡</button>
+  <span class="duration">3:30</span>
+</div>
+      <span class="album">Hot Shot</span>
+      <button class="like" type="button" aria-label="Anadir Angel a favoritos" aria-pressed="false">♡</button>
+      <span class="duration">4:00</span>
+    </div>
+  </div>
+</section>
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN: BIBLIOTECA DE CANCIONES
+         (integrada desde agregarcanciones.html)
+    ══════════════════════════════════════════ -->
+    <section class="biblioteca-section">
+      <div class="app-shell">
+
+        <section class="topbar" aria-label="Controles principales">
+          <div>
+            <p class="eyebrow">Base local de música</p>
+            <h1>Biblioteca de canciones</h1>
+          </div>
+          <div class="actions">
+            <label class="file-button">
+              <input id="fileInput" type="file" accept="audio/*" multiple>
+              <span>Agregar canciones</span>
+            </label>
+            <button id="newSongButton" type="button">Nueva canción</button>
+            <button id="addDemoButton" type="button">Cargar preview</button>
+          </div>
+        </section>
+ <img src="music/KAROL g" alt="">
+        <section class="toolbar" aria-label="Búsqueda y filtros">
+          <label class="search">
+            <span>Buscar</span>
+            <input id="searchInput" type="search" placeholder="Título, artista, álbum...">
+          </label>
+          <label class="select-wrap">
+            <span>Ordenar</span>
+            <select id="sortSelect">
+              <option value="createdAt-desc">Más recientes</option>
+              <option value="title-asc">Título A-Z</option>
+              <option value="artist-asc">Artista A-Z</option>
+              <option value="album-asc">Álbum A-Z</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="content-grid biblioteca-grid">
+          <aside class="now-playing" aria-label="Reproductor">
+            <div class="cover" id="coverArt">♪</div>
+            <p class="status" id="playerStatus">Listo para reproducir</p>
+            <h2 id="playerTitle">Selecciona una canción</h2>
+            <p id="playerMeta">Añade archivos o usa el preview.</p>
+            <audio id="audioPlayer" controls preload="metadata"></audio>
+          </aside>
+
+          <section class="library" aria-label="Listado de canciones">
+            <div class="library-head">
+              <div>
+                <h2>Canciones</h2>
+                <p id="songCount">0 canciones</p>
+              </div>
+              <button id="clearButton" class="danger" type="button">Vaciar base</button>
+            </div>
+
+            <div id="emptyState" class="empty-state">
+              <h3>Aún no hay canciones guardadas</h3>
+              <p>Agrega archivos de audio desde tu equipo. También puedes cargar previews para probar la biblioteca.</p>
+            </div>
+
+            <div id="songList" class="song-list"></div>
+          </section>
+        </section>
+
+      </div><!-- /.app-shell -->
+    </section><!-- /.biblioteca-section -->
+
+  </main>
+
+  <template id="songTemplate">
+    <article class="song-row">
+      <button class="play-button" type="button" aria-label="Reproducir">▶</button>
+      <div class="song-info">
+        <input class="title-input" aria-label="Título">
+        <div class="meta-row">
+          <input class="artist-input" aria-label="Artista" placeholder="Artista">
+          <input class="album-input" aria-label="Álbum" placeholder="Álbum">
+        </div>
+      </div>
+      <div class="song-extra">
+        <span class="duration">--:--</span>
+        <label class="attach-button">
+          <input class="attach-input" type="file" accept="audio/*">
+          <span>Archivo</span>
+        </label>
+        <button class="delete-button" type="button">Eliminar</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="jv2/dashboard.js"></script>
+  <script src="jv2/catalog.js"></script>
+  <script src="jv2/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblioteca de canciones</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="topbar" aria-label="Controles principales">
+      <div>
+        <p class="eyebrow">Base local de música</p>
+        <h1>Biblioteca de canciones</h1>
+      </div>
+      <div class="actions">
+        <label class="file-button">
+          <input id="fileInput" type="file" accept="audio/*" multiple>
+          <span>Agregar canciones</span>
+        </label>
+        <button id="newSongButton" type="button">Nueva canción</button>
+        <button id="addDemoButton" type="button">Cargar preview</button>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Búsqueda y filtros">
+      <label class="search">
+        <span>Buscar</span>
+        <input id="searchInput" type="search" placeholder="Título, artista, álbum...">
+      </label>
+      <label class="select-wrap">
+        <span>Ordenar</span>
+        <select id="sortSelect">
+          <option value="createdAt-desc">Más recientes</option>
+          <option value="title-asc">Título A-Z</option>
+          <option value="artist-asc">Artista A-Z</option>
+          <option value="album-asc">Álbum A-Z</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="content-grid">
+      <aside class="now-playing" aria-label="Reproductor">
+        <div class="cover" id="coverArt">♪</div>
+        <p class="status" id="playerStatus">Listo para reproducir</p>
+        <h2 id="playerTitle">Selecciona una canción</h2>
+        <p id="playerMeta">Añade archivos o usa el preview.</p>
+        <audio id="audioPlayer" controls preload="metadata"></audio>
+      </aside>
+
+      <section class="library" aria-label="Listado de canciones">
+        <div class="library-head">
+          <div>
+            <h2>Canciones</h2>
+            <p id="songCount">0 canciones</p>
+          </div>
+          <button id="clearButton" class="danger" type="button">Vaciar base</button>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <h3>Aún no hay canciones guardadas</h3>
+          <p>Agrega archivos de audio desde tu equipo. También puedes cargar previews para probar la biblioteca.</p>
+        </div>
+
+        <div id="songList" class="song-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <template id="songTemplate">
+    <article class="song-row">
+      <button class="play-button" type="button" aria-label="Reproducir">▶</button>
+      <div class="song-info">
+        <input class="title-input" aria-label="Título">
+        <div class="meta-row">
+          <input class="artist-input" aria-label="Artista" placeholder="Artista">
+          <input class="album-input" aria-label="Álbum" placeholder="Álbum">
+        </div>
+      </div>
+      <div class="song-extra">
+        <span class="duration">--:--</span>
+        <label class="attach-button">
+          <input class="attach-input" type="file" accept="audio/*">
+          <span>Archivo</span>
+        </label>
+        <button class="delete-button" type="button">Eliminar</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="catalog.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

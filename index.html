@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electro Music Login</title>
+  <link rel="stylesheet" href="css2/styles.css">
+</head>
+<body class="login-page">
+  <main class="login-shell">
+    <section class="login-intro">
+      <p class="eyebrow">Electro Music Access</p>
+      <h1>Music Festival</h1>
+      <p>Entra a tu zona musical con eventos, playlists, albumes y portadas en una experiencia neon.</p>
+    </section>
+
+    <section class="forms-panel">
+      <form id="loginForm" class="form-card">
+        <h2>Iniciar sesion</h2>
+
+        <label for="loginEmail">Correo electronico</label>
+        <input id="loginEmail" type="text" inputmode="email" placeholder="usuario@email.com" autocomplete="email" required>
+
+        <label for="loginPassword">Contraseña</label>
+        <input id="loginPassword" type="password" placeholder="Admin1234" autocomplete="current-password" required>
+
+        <button type="submit" class="primary-button">Entrar al festival</button>
+        <p id="loginMessage" class="message" role="status"></p>
+      </form>
+
+      <form id="registerForm" class="form-card accent-card">
+        <h2>Crear usuario</h2>
+
+        <label for="registerName">Nombre</label>
+        <input id="registerName" type="text" placeholder="Ej. Lucia Vega" required>
+
+        <label for="registerEmail">Correo electronico</label>
+        <input id="registerEmail" type="text" inputmode="email" placeholder="lucia@email.com" autocomplete="email" required>
+
+        <label for="registerPassword">Contraseña</label>
+        <input id="registerPassword" type="password" placeholder="Minimo 6 caracteres" autocomplete="new-password" required minlength="6">
+
+        <button type="submit" class="secondary-button">Crear acceso</button>
+        <p id="registerMessage" class="message" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="jv2/script.js"></script>
+  
+</body>
+</html>
